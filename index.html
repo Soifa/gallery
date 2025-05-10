@@ -12,6 +12,10 @@
       --text: #333;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -47,7 +51,7 @@
       right: 26px;
       width: 4px;
       height: 100%;
-      background: linear-gradient(to bottom, var(--accent) 0%, #ccc 0%);
+      background: var(--accent);
       z-index: 0;
     }
 
@@ -58,11 +62,9 @@
       margin-bottom: 60px;
       position: relative;
       z-index: 1;
-      text-decoration: none; /* since <a> is used */
+      text-decoration: none;
     }
 
-    /* Removed .dot styles since dots are no longer needed */
-    
     .timeline-label {
       color: var(--text);
       text-decoration: none;
@@ -71,8 +73,7 @@
       margin-right: 10px;
       transition: color 0.3s, transform 0.3s;
     }
-    
-    /* Active effect for the label, tweak as desired */
+
     .timeline-label.active {
       color: var(--accent);
       transform: scale(1.1);
@@ -81,7 +82,6 @@
     main {
       margin-left: 200px;
       width: calc(100% - 200px);
-      scroll-behavior: smooth;
     }
 
     section {
@@ -101,7 +101,7 @@
 <body>
   <nav class="timeline">
     <div class="timeline-container">
-      <div class="timeline-line" id="timeline-progress"></div>
+      <div class="timeline-line"></div>
       <a href="#photography" class="timeline-item" data-section="photography">
         <span class="timeline-label">Photography</span>
       </a>
@@ -150,52 +150,28 @@
   <script>
     const sections = document.querySelectorAll('section');
     const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineLine = document.getElementById('timeline-progress');
-
-    function getScrollPercentBetween(startY, endY) {
-      const scrollY = window.scrollY + window.innerHeight / 2;
-      if (scrollY < startY) return 0;
-      if (scrollY > endY) return 1;
-      return (scrollY - startY) / (endY - startY);
-    }
 
     window.addEventListener('scroll', () => {
       let current = '';
-      let scrollPercent = 0;
 
-      // First, remove active classes from all timeline labels
+      // Reset all labels
       timelineItems.forEach(item => {
-        const label = item.querySelector('.timeline-label');
-        label.classList.remove('active');
+        item.querySelector('.timeline-label').classList.remove('active');
       });
 
-      for (let i = 0; i < sections.length; i++) {
-        const section = sections[i];
-        const nextSection = sections[i + 1];
-        const rect = section.getBoundingClientRect();
-        const top = rect.top + window.scrollY;
-        const bottom = top + rect.height;
-
-        // Update the current section based on scroll position
+      // Find which section is in view
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
         if (window.scrollY + window.innerHeight / 2 >= top) {
           current = section.id;
         }
+      });
 
-        // Update timeline progress gradient if there's a next section
-        if (nextSection) {
-          const nextTop = nextSection.getBoundingClientRect().top + window.scrollY;
-          scrollPercent = getScrollPercentBetween(top, nextTop);
-          if (scrollPercent >= 0 && scrollPercent <= 1) {
-            timelineLine.style.background = `linear-gradient(to bottom, var(--accent) 0%, var(--accent) ${((i + scrollPercent) / sections.length) * 100}%, #ccc ${((i + scrollPercent) / sections.length) * 100}%, #ccc 100%)`;
-          }
-        }
-      }
-
-      // Add active effect to the timeline label of the current section
+      // Highlight the matching label
       timelineItems.forEach(item => {
         if (item.dataset.section === current) {
-          const label = item.querySelector('.timeline-label');
-          label.classList.add('active');
+          item.querySelector('.timeline-label').classList.add('active');
         }
       });
     });
