@@ -58,30 +58,24 @@
       margin-bottom: 60px;
       position: relative;
       z-index: 1;
+      text-decoration: none; /* since <a> is used */
     }
 
-    .dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #bbb;
-      margin-left: 10px;
-      flex-shrink: 0;
-      transition: background 0.3s;
-      position: relative;
-      right: 2px;
-    }
-
-    .dot.active {
-      background: var(--accent);
-    }
-
+    /* Removed .dot styles since dots are no longer needed */
+    
     .timeline-label {
       color: var(--text);
       text-decoration: none;
       font-weight: bold;
       font-size: 0.95rem;
       margin-right: 10px;
+      transition: color 0.3s, transform 0.3s;
+    }
+    
+    /* Active effect for the label, tweak as desired */
+    .timeline-label.active {
+      color: var(--accent);
+      transform: scale(1.1);
     }
 
     main {
@@ -110,23 +104,18 @@
       <div class="timeline-line" id="timeline-progress"></div>
       <a href="#photography" class="timeline-item" data-section="photography">
         <span class="timeline-label">Photography</span>
-        <div class="dot" id="dot-photography"></div>
       </a>
       <a href="#poster" class="timeline-item" data-section="poster">
         <span class="timeline-label">Poster</span>
-        <div class="dot" id="dot-poster"></div>
       </a>
       <a href="#figma" class="timeline-item" data-section="figma">
         <span class="timeline-label">Figma</span>
-        <div class="dot" id="dot-figma"></div>
       </a>
       <a href="#film" class="timeline-item" data-section="film">
         <span class="timeline-label">Film Editing</span>
-        <div class="dot" id="dot-film"></div>
       </a>
       <a href="#coding" class="timeline-item" data-section="coding">
         <span class="timeline-label">Coding</span>
-        <div class="dot" id="dot-coding"></div>
       </a>
     </div>
   </nav>
@@ -160,13 +149,7 @@
 
   <script>
     const sections = document.querySelectorAll('section');
-    const dots = {
-      photography: document.getElementById('dot-photography'),
-      poster: document.getElementById('dot-poster'),
-      figma: document.getElementById('dot-figma'),
-      film: document.getElementById('dot-film'),
-      coding: document.getElementById('dot-coding')
-    };
+    const timelineItems = document.querySelectorAll('.timeline-item');
     const timelineLine = document.getElementById('timeline-progress');
 
     function getScrollPercentBetween(startY, endY) {
@@ -180,6 +163,12 @@
       let current = '';
       let scrollPercent = 0;
 
+      // First, remove active classes from all timeline labels
+      timelineItems.forEach(item => {
+        const label = item.querySelector('.timeline-label');
+        label.classList.remove('active');
+      });
+
       for (let i = 0; i < sections.length; i++) {
         const section = sections[i];
         const nextSection = sections[i + 1];
@@ -187,10 +176,12 @@
         const top = rect.top + window.scrollY;
         const bottom = top + rect.height;
 
+        // Update the current section based on scroll position
         if (window.scrollY + window.innerHeight / 2 >= top) {
           current = section.id;
         }
 
+        // Update timeline progress gradient if there's a next section
         if (nextSection) {
           const nextTop = nextSection.getBoundingClientRect().top + window.scrollY;
           scrollPercent = getScrollPercentBetween(top, nextTop);
@@ -200,14 +191,13 @@
         }
       }
 
-      for (const key in dots) {
-        if (dots[key]) {
-          dots[key].classList.remove('active');
+      // Add active effect to the timeline label of the current section
+      timelineItems.forEach(item => {
+        if (item.dataset.section === current) {
+          const label = item.querySelector('.timeline-label');
+          label.classList.add('active');
         }
-      }
-      if (dots[current]) {
-        dots[current].classList.add('active');
-      }
+      });
     });
   </script>
 </body>
