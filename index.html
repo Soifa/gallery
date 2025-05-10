@@ -8,7 +8,6 @@
     :root {
       --light-pink: #ffe8f2;
       --soft-blue: #e3f3ff;
-      --light-lavender: #f2f0ff;
       --accent: #dab6e7;
       --text: #333;
     }
@@ -26,56 +25,79 @@
       top: 0;
       left: 0;
       height: 100vh;
-      width: 160px;
-      background: rgba(255, 255, 255, 0.8);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      width: 200px;
       padding: 2rem 0;
-      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: center;
+      background: transparent;
     }
 
-    nav.timeline .dot {
+    .timeline-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-right: 40px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 0;
+      right: 26px;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent) 0%, #ccc 0%);
+      z-index: 0;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dot {
       width: 14px;
       height: 14px;
       border-radius: 50%;
       background: #bbb;
-      margin-bottom: 30px;
+      margin-left: 10px;
+      flex-shrink: 0;
       transition: background 0.3s;
+      position: relative;
+      right: 2px;
     }
 
-    nav.timeline .dot.active {
+    .dot.active {
       background: var(--accent);
     }
 
-    nav.timeline a {
+    .timeline-label {
       color: var(--text);
       text-decoration: none;
       font-weight: bold;
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
+      font-size: 0.95rem;
+      margin-right: 10px;
     }
 
     main {
-      margin-left: 160px;
-      width: calc(100% - 160px);
-      padding: 2rem;
+      margin-left: 200px;
+      width: calc(100% - 200px);
       scroll-behavior: smooth;
     }
 
     section {
       min-height: 100vh;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.7);
-      margin-bottom: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-      transition: transform 0.3s;
+      padding: 6rem 4rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     section h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       border-bottom: 2px solid #eccff2;
       padding-bottom: 0.5rem;
       margin-bottom: 1rem;
@@ -84,11 +106,29 @@
 </head>
 <body>
   <nav class="timeline">
-    <a href="#photography" data-section="photography">Photography<div class="dot" id="dot-photography"></div></a>
-    <a href="#poster" data-section="poster">Poster<div class="dot" id="dot-poster"></div></a>
-    <a href="#figma" data-section="figma">Figma<div class="dot" id="dot-figma"></div></a>
-    <a href="#film" data-section="film">Film Editing<div class="dot" id="dot-film"></div></a>
-    <a href="#coding" data-section="coding">Coding<div class="dot" id="dot-coding"></div></a>
+    <div class="timeline-container">
+      <div class="timeline-line" id="timeline-progress"></div>
+      <a href="#photography" class="timeline-item" data-section="photography">
+        <span class="timeline-label">Photography</span>
+        <div class="dot" id="dot-photography"></div>
+      </a>
+      <a href="#poster" class="timeline-item" data-section="poster">
+        <span class="timeline-label">Poster</span>
+        <div class="dot" id="dot-poster"></div>
+      </a>
+      <a href="#figma" class="timeline-item" data-section="figma">
+        <span class="timeline-label">Figma</span>
+        <div class="dot" id="dot-figma"></div>
+      </a>
+      <a href="#film" class="timeline-item" data-section="film">
+        <span class="timeline-label">Film Editing</span>
+        <div class="dot" id="dot-film"></div>
+      </a>
+      <a href="#coding" class="timeline-item" data-section="coding">
+        <span class="timeline-label">Coding</span>
+        <div class="dot" id="dot-coding"></div>
+      </a>
+    </div>
   </nav>
 
   <main>
@@ -127,17 +167,38 @@
       film: document.getElementById('dot-film'),
       coding: document.getElementById('dot-coding')
     };
+    const timelineLine = document.getElementById('timeline-progress');
+
+    function getScrollPercentBetween(startY, endY) {
+      const scrollY = window.scrollY + window.innerHeight / 2;
+      if (scrollY < startY) return 0;
+      if (scrollY > endY) return 1;
+      return (scrollY - startY) / (endY - startY);
+    }
 
     window.addEventListener('scroll', () => {
       let current = '';
+      let scrollPercent = 0;
 
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= sectionTop - sectionHeight / 2) {
-          current = section.getAttribute('id');
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const nextSection = sections[i + 1];
+        const rect = section.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        const bottom = top + rect.height;
+
+        if (window.scrollY + window.innerHeight / 2 >= top) {
+          current = section.id;
         }
-      });
+
+        if (nextSection) {
+          const nextTop = nextSection.getBoundingClientRect().top + window.scrollY;
+          scrollPercent = getScrollPercentBetween(top, nextTop);
+          if (scrollPercent >= 0 && scrollPercent <= 1) {
+            timelineLine.style.background = `linear-gradient(to bottom, var(--accent) 0%, var(--accent) ${((i + scrollPercent) / sections.length) * 100}%, #ccc ${((i + scrollPercent) / sections.length) * 100}%, #ccc 100%)`;
+          }
+        }
+      }
 
       for (const key in dots) {
         if (dots[key]) {
