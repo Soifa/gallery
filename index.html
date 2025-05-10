@@ -1,342 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery | Sofia Xu</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Sofia Xu</title>
 
-  <!-- FONT EMBEDS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- FONT EMBEDS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --light-pink: #ffe8f2;
-      --soft-blue: #e3f3ff;
-      --accent: #dab6e7;
-      --text: #333;
-      --text-muted: #666;
-    }
+    <style>
+      :root {
+        --light-pink: #ffe8f2;
+        --soft-blue: #e3f3ff;
+        --accent: #dab6e7;
+        --text: #333;
+        --text-muted: #666;
+      }
 
-    html {
-      scroll-behavior: smooth;
-    }
+      html {
+        scroll-behavior: smooth;
+      }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, var(--soft-blue), var(--light-pink));
-      color: var(--text);
-      display: flex;
-    }
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(to bottom right, var(--soft-blue), var(--light-pink));
+        color: var(--text);
+        display: flex;
+      }
 
-    nav.timeline {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 200px;
-      padding: 2rem 0;
-      display: flex;
-      justify-content: center;
-      background: transparent;
-    }
+      nav.timeline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 200px;
+        padding: 2rem 0;
+        display: flex;
+        justify-content: center;
+        background: transparent;
+      }
 
-    .timeline-container {
-      position: relative;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      padding-right: 40px;
-    }
+      .timeline-container {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding-right: 40px;
+      }
 
-    .timeline-line {
-      position: absolute;
-      top: 0;
-      right: 26px;
-      width: 4px;
-      height: 100%;
-      background: var(--accent);
-      z-index: 0;
-    }
+      .timeline-line {
+        position: absolute;
+        top: 0;
+        right: 26px;
+        width: 4px;
+        height: 100%;
+        background: var(--accent);
+        z-index: 0;
+      }
 
-    .timeline-item {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      margin-bottom: 60px;
-      position: relative;
-      z-index: 1;
-      text-decoration: none;
-    }
+      .timeline-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 60px;
+        position: relative;
+        z-index: 1;
+        text-decoration: none;
+      }
 
-    .timeline-label {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.95rem;
-      margin-right: 10px;
-      transition: color 0.3s, transform 0.3s;
-    }
+      .timeline-label {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.95rem;
+        margin-right: 10px;
+        transition: color 0.3s, transform 0.3s;
+      }
 
-    .timeline-label.active {
-      color: var(--accent);
-      transform: scale(1.1);
-    }
+      .timeline-label.active {
+        color: var(--accent);
+        transform: scale(1.1);
+      }
 
-    main {
-      margin-left: 200px;
-      width: calc(100% - 200px);
-    }
+      main {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+      }
 
-    section {
-      padding: 6rem 4rem 4rem;
-    }
+      section {
+        padding: 6rem 4rem 4rem;
+      }
 
-    #photography {
-      padding-bottom: 2rem;
-      margin-bottom: 0;
-    }
+      #photography {
+        padding-bottom: 2rem;
+        margin-bottom: 0;
+      }
 
-    section h2 {
-      font-size: 2.5rem;
-      border-bottom: 2px solid #eccff2;
-      padding-bottom: 0.5rem;
-      margin-bottom: 2rem;
-    }
+      section h2 {
+        font-size: 2.5rem;
+        border-bottom: 2px solid #eccff2;
+        padding-bottom: 0.5rem;
+        margin-bottom: 2rem;
+      }
 
-    .photo-scroll {
-      display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      gap: 20px;
-      padding-bottom: 1.5rem;
-      white-space: nowrap;
-    }
+      .photo-scroll {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        gap: 20px;
+        padding-bottom: 1.5rem;
+        white-space: nowrap;
+      }
 
-    .poster-subtitle {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--text);
-      margin: 3rem 0 1rem;
-      font-family: 'Inter', sans-serif;
-    }
+      .poster-subtitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text);
+        margin: 3rem 0 1rem;
+        font-family: 'Inter', sans-serif;
+      }
 
-    #poster .photo-item p {
-      font-size: 1rem;
-      font-family: 'Inter', sans-serif;
-      color: var(--text-muted);
-    }
 
-    .photo-item {
-      flex: 0 0 auto;
-      width: 400px;
-      text-align: center;
-      font-family: 'Inter', sans-serif;
-      font-size: 1.2rem;
-      color: var(--text-muted);
-    }
 
-    .photo-item img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease;
-      cursor: zoom-in;
-    }
+      .photo-item {
+        flex: 0 0 auto;
+        width: 400px;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.2rem;
+        color: var(--text-muted);
+      }
 
-    .photo-item img:hover {
-      transform: scale(1.03);
-    }
+      .photo-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+        cursor: zoom-in;
+      }
 
-    /* Lightbox Styles */
-    #lightbox-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(6px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
+      .photo-item img:hover {
+        transform: scale(1.03);
+      }
 
-    #lightbox-overlay img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 12px;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-    }
+      /* Lightbox Styles */
+      #lightbox-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
-    #lightbox-overlay.active {
-      visibility: visible;
-      opacity: 1;
-      pointer-events: all;
-      cursor: zoom-out;
-    }
-  </style>
-</head>
 
-<body>
-  <nav class="timeline">
-    <div class="timeline-container">
-      <div class="timeline-line"></div>
-      <a href="#photography" class="timeline-item" data-section="photography">
-        <span class="timeline-label">Photography</span>
-      </a>
-      <a href="#poster" class="timeline-item" data-section="poster">
-        <span class="timeline-label">Poster</span>
-      </a>
-      <a href="#figma" class="timeline-item" data-section="figma">
-        <span class="timeline-label">Figma</span>
-      </a>
-      <a href="#film" class="timeline-item" data-section="film">
-        <span class="timeline-label">Film Editing</span>
-      </a>
-      <a href="#coding" class="timeline-item" data-section="coding">
-        <span class="timeline-label">Coding</span>
-      </a>
+
+      #lightbox-overlay.active {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: all;
+        cursor: zoom-out;
+      }
+
+      /* Dark Mode Toggle */
+      .toggle-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 10000;
+      }
+
+      .toggle-btn {
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        border-radius: 20px;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        transition: background 0.3s, transform 0.2s;
+      }
+
+      .toggle-btn:hover {
+        background: #c89add;
+        transform: scale(1.05);
+      }
+
+      /* Dark Mode Theme */
+      body.dark-mode {
+        background: linear-gradient(to bottom right, #1f1f2e, #2c2b3f);
+        color: #f0f0f0;
+      }
+
+      body.dark-mode .timeline-label {
+        color: #ddd;
+      }
+
+      body.dark-mode .timeline-label.active {
+        color: var(--accent);
+      }
+
+      body.dark-mode section h2,
+      body.dark-mode .poster-subtitle {
+        color: #f0f0f0;
+        border-color: var(--accent);
+      }
+
+      body.dark-mode .photo-item p {
+        color: #bbb !important;
+      }
+
+      #poster .photo-item p {
+        font-size: 1rem;
+        font-family: 'Inter', sans-serif;
+        color: var(--text-muted);
+      }
+
+      body.dark-mode .photo-item img {
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08);
+      }
+
+      #lightbox-overlay img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 12px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="toggle-container">
+      <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
-  </nav>
 
-  <main>
-<section id="photography">
-      <h2>Photography</h2>
-      <div class="photo-scroll">
-        <div class="photo-item">
-          <img src="1.Landscape-min.JPG" alt="Landscape">
-          <p>Landscape</p>
-        </div>
-        <div class="photo-item">
-          <img src="2.Portrait-min.JPG" alt="Portrait">
-          <p>Portrait</p>
-        </div>
-        <div class="photo-item">
-          <img src="3.Portrait-2-min.JPG" alt="Portrait with Emotion">
-          <p>Portrait with Emotion</p>
-        </div>
-        <div class="photo-item">
-          <img src="4.Wildlife-min.JPG" alt="Wildlife">
-          <p>Wildlife</p>
-        </div>
-        <div class="photo-item">
-          <img src="5.Fashion-min.JPG" alt="Fashion">
-          <p>Fashion</p>
-        </div>
-        <div class="photo-item">
-          <img src="6.Macro-min.JPG" alt="Macro">
-          <p>Macro</p>
-        </div>
-        <div class="photo-item">
-          <img src="7.Action-Sports-min.JPG" alt="Action">
-          <p>Action</p>
-        </div>
-        <div class="photo-item">
-          <img src="9.Long-Exposure-min.JPG" alt="Long Exposure">
-          <p>Long Exposure</p>
-        </div>
+    <nav class="timeline">
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+        <a href="#photography" class="timeline-item" data-section="photography">
+          <span class="timeline-label">Photography</span>
+        </a>
+        <a href="#poster" class="timeline-item" data-section="poster">
+          <span class="timeline-label">Poster</span>
+        </a>
+        <a href="#figma" class="timeline-item" data-section="figma">
+          <span class="timeline-label">Figma</span>
+        </a>
+        <a href="#film" class="timeline-item" data-section="film">
+          <span class="timeline-label">Film Editing</span>
+        </a>
+        <a href="#coding" class="timeline-item" data-section="coding">
+          <span class="timeline-label">Coding</span>
+        </a>
       </div>
-    </section>
+    </nav>
 
-    <section id="poster">
-      <h2>Poster</h2>
+    <main>
+      <section id="photography">
+        <h2>Photography</h2>
+        <div class="photo-scroll">
+          <div class="photo-item">
+            <img src="1.Landscape-min.JPG" alt="Landscape">
+            <p>Landscape</p>
+          </div>
+          <div class="photo-item">
+            <img src="2.Portrait-min.JPG" alt="Portrait">
+            <p>Portrait</p>
+          </div>
+          <div class="photo-item">
+            <img src="3.Portrait-2-min.JPG" alt="Portrait with Emotion">
+            <p>Portrait with Emotion</p>
+          </div>
+          <div class="photo-item">
+            <img src="4.Wildlife-min.JPG" alt="Wildlife">
+            <p>Wildlife</p>
+          </div>
+          <div class="photo-item">
+            <img src="5.Fashion-min.JPG" alt="Fashion">
+            <p>Fashion</p>
+          </div>
+          <div class="photo-item">
+            <img src="6.Macro-min.JPG" alt="Macro">
+            <p>Macro</p>
+          </div>
+          <div class="photo-item">
+            <img src="7.Action-Sports-min.JPG" alt="Action">
+            <p>Action</p>
+          </div>
+          <div class="photo-item">
+            <img src="9.Long-Exposure-min.JPG" alt="Long Exposure">
+            <p>Long Exposure</p>
+          </div>
+        </div>
+      </section>
 
-      <div class="poster-subtitle">Where I'm At? Where I'm Going?</div>
-      <div class="photo-scroll">
-        <div class="photo-item"><img src="Poster Deisign-01-min.png"><p>Good Design Is...</p></div>
-        <div class="photo-item"><img src="Poster Deisign-02-min.png"><p>My Gift</p></div>
-        <div class="photo-item"><img src="Poster Deisign-03-min.png"><p>Style: Quirky</p></div>
-        <div class="photo-item"><img src="Poster Deisign-04-min.png"><p>Goals</p></div>
-        <div class="photo-item"><img src="Poster Deisign-05-min.png"><p>Theme to Explore</p></div>
-      </div>
+      <section id="poster">
+        <h2>Poster</h2>
 
-      <div class="poster-subtitle">Two perspectives of the same place</div>
-      <div class="photo-scroll">
-        <div class="photo-item"><img src="Perspective 1.png"><p>Perspective 1</p></div>
-        <div class="photo-item"><img src="Perspective 2.png"><p>Perspective 2</p></div>
-      </div>
+        <div class="poster-subtitle">Where I'm At? Where I'm Going?</div>
+        <div class="photo-scroll">
+          <div class="photo-item"><img src="Poster Deisign-01-min.png" alt="poster 1">
+            <p>Good Design Is...</p>
+          </div>
+          <div class="photo-item"><img src="Poster Deisign-02-min.png" alt="poster 2">
+            <p>My Gift</p>
+          </div>
+          <div class="photo-item"><img src="Poster Deisign-03-min.png" alt="poster 3">
+            <p>Style: Quirky</p>
+          </div>
+          <div class="photo-item"><img src="Poster Deisign-04-min.png" alt="poster 4">
+            <p>Goals</p>
+          </div>
+          <div class="photo-item"><img src="Poster Deisign-05-min.png" alt="poster 5">
+            <p>Theme to Explore</p>
+          </div>
+        </div>
 
-      <div class="poster-subtitle">Original Photos & Version History</div>
-      <div class="photo-scroll">
-        <div class="photo-item"><img src="IMG_6492.jpg"><p>Original 1</p></div>
-        <div class="photo-item"><img src="IMG_6493.jpg"><p>Original 2</p></div>
-        <div class="photo-item"><img src="Adobe Express - file.png"><p>Version History</p></div>
-      </div>
+        <div class="poster-subtitle">Two perspectives of the same place</div>
+        <div class="photo-scroll">
+          <div class="photo-item"><img src="Perspective 1.png" alt="first design">
+            <p>Perspective 1</p>
+          </div>
+          <div class="photo-item"><img src="Perspective 2.png" alt="second design">
+            <p>Perspective 2</p>
+          </div>
+        </div>
 
-      <div class="poster-subtitle">Photoshop Rain Effect Poster Design</div>
-      <div class="photo-scroll">
-        <div class="photo-item"><img src="Poster_Design__2_Revised2-min.png"><p>Version 1</p></div>
-        <div class="photo-item"><img src="Poster_Design__2_Revised-min.png"><p>Version 2</p></div>
-      </div>
+        <div class="poster-subtitle">Original Photos &amp; Version History</div>
+        <div class="photo-scroll">
+          <div class="photo-item"><img src="IMG_6492.jpg" alt="Original Photo without editing">
+            <p>Original 1</p>
+          </div>
+          <div class="photo-item"><img src="IMG_6493.jpg" alt="Original Photo without editing">
+            <p>Original 2</p>
+          </div>
+          <div class="photo-item"><img src="Adobe Express - file.png" alt="version variation">
+            <p>Version History</p>
+          </div>
+        </div>
 
-      <div class="poster-subtitle">Original Photo & Rain Effect</div>
-      <div class="photo-scroll">
-        <div class="photo-item"><img src="IMG_6576.jpg"><p>Original Photo</p></div>
-        <div class="photo-item"><img src="Poster_Design__2-min.png"><p>After Rain Effect</p></div>
-      </div>
-    </section>
+        <div class="poster-subtitle">Photoshop Rain Effect Poster Design</div>
+        <div class="photo-scroll">
+          <div class="photo-item"><img src="Poster_Design__2_Revised2-min.png" alt="version variation">
+            <p>Version 1</p>
+          </div>
+          <div class="photo-item"><img src="Poster_Design__2_Revised-min.png" alt="version variation">
+            <p>Version 2</p>
+          </div>
+        </div>
 
-    <section id="figma"><h2>Figma</h2><p>Your Figma designs go here.</p></section>
-    <section id="film"><h2>Film Editing</h2><p>Your film editing works go here.</p></section>
-    <section id="coding"><h2>Coding</h2><p>Your coding projects go here.</p></section>
-  </main>
+        <div class="poster-subtitle">Original Photo &amp; Rain Effect</div>
+        <div class="photo-scroll">
+          <div class="photo-item"><img src="IMG_6576.jpg" alt="Original Photo without any editing">
+            <p>Original Photo</p>
+          </div>
+          <div class="photo-item"><img src="Poster_Design__2-min.png" alt="Original Photo with rain effect">
+            <p>After Rain Effect</p>
+          </div>
+        </div>
+      </section>
 
-  <!-- Lightbox -->
-  <div id="lightbox-overlay">
-    <img src="" alt="Zoomed image">
-  </div>
+      <section id="figma">
+        <h2>Figma</h2>
+        <p>Your Figma designs go here.</p>
+      </section>
+      <section id="film">
+        <h2>Film Editing</h2>
+        <p>Your film editing works go here.</p>
+      </section>
+      <section id="coding">
+        <h2>Coding</h2>
+        <p>Your coding projects go here.</p>
+      </section>
+    </main>
 
-  <script>
-    const sections = document.querySelectorAll('section');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const lightbox = document.getElementById('lightbox-overlay');
-    const lightboxImg = lightbox.querySelector('img');
+    <!-- Lightbox -->
+    <div id="lightbox-overlay">
+      <img src="" alt="Zoomed image">
+    </div>
 
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        if (window.scrollY + window.innerHeight / 2 >= top) {
-          current = section.id;
-        }
+    <script>
+      const sections = document.querySelectorAll('section');
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      const lightbox = document.getElementById('lightbox-overlay');
+      const lightboxImg = lightbox.querySelector('img');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          if (window.scrollY + window.innerHeight / 2 >= top) {
+            current = section.id;
+          }
+        });
+        timelineItems.forEach(item => {
+          item.querySelector('.timeline-label').classList.remove('active');
+          if (item.dataset.section === current) {
+            item.querySelector('.timeline-label').classList.add('active');
+          }
+        });
       });
-      timelineItems.forEach(item => {
-        item.querySelector('.timeline-label').classList.remove('active');
-        if (item.dataset.section === current) {
-          item.querySelector('.timeline-label').classList.add('active');
-        }
+
+      // Lightbox functionality
+      document.querySelectorAll('.photo-item img').forEach(img => {
+        img.addEventListener('click', () => {
+          lightboxImg.src = img.src;
+          lightbox.classList.add('active');
+        });
       });
-    });
 
-    // Lightbox functionality
-    document.querySelectorAll('.photo-item img').forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightbox.classList.add('active');
-      });
-    });
-
-    lightbox.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-      lightboxImg.src = '';
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
+      lightbox.addEventListener('click', () => {
         lightbox.classList.remove('active');
         lightboxImg.src = '';
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          lightbox.classList.remove('active');
+          lightboxImg.src = '';
+        }
+      });
+
+      function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
       }
-    });
-  </script>
-</body>
+
+      // Restore dark mode if previously set
+      window.addEventListener('DOMContentLoaded', () => {
+        const savedMode = localStorage.getItem('dark-mode');
+        if (savedMode === 'true') {
+          document.body.classList.add('dark-mode');
+        }
+      });
+    </script>
+  </body>
 </html>
