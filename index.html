@@ -176,57 +176,64 @@
       }
 
       /* Dark Mode Toggle */
-       .toggle-container {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-    .toggle-switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 26px;
-    }
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: var(--accent);
-      transition: 0.4s;
-      border-radius: 34px;
-    }
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 20px;
-      width: 20px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: 0.4s;
-      border-radius: 50%;
-    }
-    .toggle-switch input:checked + .slider {
-      background-color: #999;
-    }
-    .toggle-switch input:checked + .slider:before {
-      transform: translateX(24px);
-    }
+      .toggle-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 1.5rem 2rem 0 auto;
+        /* top + right spacing */
+        max-width: 1200px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        color: var(--text);
+        gap: 0.75rem;
+      }
+
+
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 26px;
+      }
+
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--accent);
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      .toggle-switch input:checked+.slider {
+        background-color: #999;
+      }
+
+      .toggle-switch input:checked+.slider:before {
+        transform: translateX(24px);
+      }
 
       .toggle-btn {
         background: var(--accent);
@@ -290,13 +297,7 @@
   </head>
 
   <body>
-    <div class="toggle-container">
-    <label class="toggle-switch">
-      <input type="checkbox" id="modeToggle" onclick="toggleDarkMode()">
-      <span class="slider"></span>
-    </label>
-    <span id="modeLabel">Light Mode</span>
-  </div>
+
 
     <nav class="timeline">
       <div class="timeline-container">
@@ -320,6 +321,13 @@
     </nav>
 
     <main>
+      <div class="toggle-container">
+        <label class="toggle-switch">
+          <input type="checkbox" id="modeToggle" onclick="toggleDarkMode()">
+          <span class="slider"></span>
+        </label>
+        <span id="modeLabel">Light Mode</span>
+      </div>
       <section id="photography">
         <h2>Photography</h2>
         <div class="photo-scroll">
@@ -487,28 +495,27 @@
       });
 
       function toggleDarkMode() {
-  const isDark = document.body.classList.toggle('dark-mode');
-  const label = document.getElementById('modeLabel');
-  label.textContent = isDark ? 'Dark Mode' : 'Light Mode';
-  label.style.color = isDark ? '#ffffff' : 'var(--text)';
-  localStorage.setItem('dark-mode', isDark);
-}
+        const isDark = document.body.classList.toggle('dark-mode');
+        const label = document.getElementById('modeLabel');
+        label.textContent = isDark ? 'Dark Mode' : 'Light Mode';
+        label.style.color = isDark ? '#ffffff' : 'var(--text)';
+        localStorage.setItem('dark-mode', isDark);
+      }
 
 
       // Restore dark mode if previously set
       window.addEventListener('DOMContentLoaded', () => {
-  const savedMode = localStorage.getItem('dark-mode');
-  const label = document.getElementById('modeLabel');
-  const toggle = document.getElementById('modeToggle');
+        const savedMode = localStorage.getItem('dark-mode');
+        const label = document.getElementById('modeLabel');
+        const toggle = document.getElementById('modeToggle');
 
-  if (savedMode === 'true') {
-    document.body.classList.add('dark-mode');
-    toggle.checked = true;
-    label.textContent = 'Dark Mode';
-    label.style.color = '#ffffff';
-  }
-});
-
+        if (savedMode === 'true') {
+          document.body.classList.add('dark-mode');
+          toggle.checked = true;
+          label.textContent = 'Dark Mode';
+          label.style.color = '#ffffff';
+        }
+      });
     </script>
   </body>
 </html>
