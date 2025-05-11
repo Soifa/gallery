@@ -342,6 +342,57 @@ body.dark-mode .figma-card {
 body.dark-mode .figma-caption {
   color: #ccc;
 }
+.film-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.film-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+  color: var(--text);
+}
+
+.film-card:hover {
+  transform: scale(1.02);
+}
+
+.film-card iframe {
+  width: 100%;
+  height: 240px;
+  border: none;
+}
+
+.film-card h3 {
+  margin: 1rem 0 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.film-card p {
+  padding: 0 1rem 1.5rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+}
+
+body.dark-mode .film-card {
+  background: #2c2b3f;
+}
+
+body.dark-mode .film-card h3 {
+  color: #f0f0f0;
+}
+
+body.dark-mode .film-card p {
+  color: #ccc;
+}
 
     </style>
   </head>
@@ -515,9 +566,32 @@ body.dark-mode .figma-caption {
 
       
       <section id="film">
-        <h2>Film Editing</h2>
-        <p>Your film editing works go here.</p>
-      </section>
+  <h2>Film Editing</h2>
+  <div class="film-gallery">
+    <div class="film-card">
+      <iframe src="https://www.youtube.com/embed/3YbWMkGh0gU?si=9NcsOSw5Cs3dEsPW" allowfullscreen></iframe>
+      <h3>Echoes of Markham</h3>
+      <p>A documentary exploring the Markham Museum across different eras, showing how people lived throughout time.</p>
+    </div>
+    <div class="film-card">
+      <iframe src="https://www.youtube.com/embed/lOhV2TG9siY?si=028Hw7VQJEvDGD15" allowfullscreen></iframe>
+      <h3>Emotion Design</h3>
+      <p>Demonstrates the emotion of horror through design. A story about the cost of fame and the fragility of success.</p>
+    </div>
+    <div class="film-card">
+      <iframe src="https://www.youtube.com/embed/FeMtgN2BEik?si=E8dhoLBLD1vXpUz2" allowfullscreen></iframe>
+      <h3>Silent Film: Roughcut</h3>
+      <p>Follows a student’s quiet morning in a small one-bedroom apartment with thoughtful visual storytelling.</p>
+    </div>
+    <div class="film-card">
+      <iframe src="https://www.youtube.com/embed/w1W2Xrum9xA?si=WUjbsYBQiiNmVvJC" allowfullscreen></iframe>
+      <h3>Silent Film: Final Cut</h3>
+      <p>Final version showing detailed daily rituals — waking, cooking, getting ready — with creative editing touches.</p>
+    </div>
+  </div>
+</section>
+
+      
       <section id="coding">
         <h2>Coding</h2>
         <p>Your coding projects go here.</p>
