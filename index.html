@@ -167,14 +167,15 @@
       }
 
       .figma-img {
-  width: 100%;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-.figma-img:hover {
-  transform: scale(1.03);
-}
+        width: 100%;
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .figma-img:hover {
+        transform: scale(1.03);
+      }
 
 
       #lightbox-overlay.active {
@@ -302,98 +303,98 @@
         border-radius: 12px;
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
       }
-      
+
       .grid-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  padding-bottom: 2rem;
-}
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        padding-bottom: 2rem;
+      }
 
-.figma-card {
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background: white;
-  transition: transform 0.3s ease;
-  cursor: zoom-in;
-}
+      .figma-card {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background: white;
+        transition: transform 0.3s ease;
+        cursor: zoom-in;
+      }
 
-.figma-card:hover {
-  transform: scale(1.02);
-}
+      .figma-card:hover {
+        transform: scale(1.02);
+      }
 
-.figma-card img {
-  width: 100%;
-  display: block;
-}
+      .figma-card img {
+        width: 100%;
+        display: block;
+      }
 
-.figma-caption {
-  text-align: center;
-  padding: 0.75rem;
-  font-size: 1rem;
-  color: var(--text-muted);
-}
+      .figma-caption {
+        text-align: center;
+        padding: 0.75rem;
+        font-size: 1rem;
+        color: var(--text-muted);
+      }
 
-body.dark-mode .figma-card {
-  background: #2c2b3f;
-}
+      body.dark-mode .figma-card {
+        background: #2c2b3f;
+      }
 
-body.dark-mode .figma-caption {
-  color: #ccc;
-}
-.film-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-}
+      body.dark-mode .figma-caption {
+        color: #ccc;
+      }
 
-.film-card {
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  text-align: center;
-  color: var(--text);
-}
+      .film-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+      }
 
-.film-card:hover {
-  transform: scale(1.02);
-}
+      .film-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        text-align: center;
+        color: var(--text);
+      }
 
-.film-card iframe {
-  width: 100%;
-  height: 240px;
-  border: none;
-}
+      .film-card:hover {
+        transform: scale(1.02);
+      }
 
-.film-card h3 {
-  margin: 1rem 0 0.5rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 1.25rem;
-  color: var(--text);
-}
+      .film-card iframe {
+        width: 100%;
+        height: 240px;
+        border: none;
+      }
 
-.film-card p {
-  padding: 0 1rem 1.5rem;
-  font-size: 1rem;
-  color: var(--text-muted);
-  font-family: 'Inter', sans-serif;
-}
+      .film-card h3 {
+        margin: 1rem 0 0.5rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.25rem;
+        color: var(--text);
+      }
 
-body.dark-mode .film-card {
-  background: #2c2b3f;
-}
+      .film-card p {
+        padding: 0 1rem 1.5rem;
+        font-size: 1rem;
+        color: var(--text-muted);
+        font-family: 'Inter', sans-serif;
+      }
 
-body.dark-mode .film-card h3 {
-  color: #f0f0f0;
-}
+      body.dark-mode .film-card {
+        background: #2c2b3f;
+      }
 
-body.dark-mode .film-card p {
-  color: #ccc;
-}
+      body.dark-mode .film-card h3 {
+        color: #f0f0f0;
+      }
 
+      body.dark-mode .film-card p {
+        color: #ccc;
+      }
     </style>
   </head>
 
@@ -534,76 +535,98 @@ body.dark-mode .film-card p {
       </section>
 
       <section id="figma">
-  <h2>Figma</h2>
-  <div class="grid-gallery">
-    <div class="figma-card" data-figma-url="https://www.figma.com/design/cmaBmjmdEWgBx6ghAGDRLr/Xu_Sofia_W8">
-      <img src="Xu_Sofia_W8.png" alt="Design Library">
-      <div class="figma-caption">Design Library</div>
-    </div>
-    <div class="figma-card" data-figma-url="https://www.figma.com/proto/Ax9EvzDlnglwnViJqWgsEO/Figma-Quiz---Section-2">
-      <img src="Figma Quiz - Section 2.png" alt="Book Reading App">
-      <div class="figma-caption">Book Reading App</div>
-    </div>
-    <div class="figma-card" data-figma-url="https://www.figma.com/design/7eE2XLGlNA7BlLXauJJk4u/UX-Jam--Sunlife--Copy-">
-      <img src="Frame 11949.png" alt="Sunlife App 1">
-      <div class="figma-caption">Sunlife Learn App 1</div>
-    </div>
-    <div class="figma-card" data-figma-url="https://www.figma.com/design/7eE2XLGlNA7BlLXauJJk4u/UX-Jam--Sunlife--Copy-">
-      <img src="Frame 11949 (1).png" alt="Sunlife App 2">
-      <div class="figma-caption">Sunlife Learn App 2</div>
-    </div>
-    <div class="figma-card" data-figma-url="https://www.figma.com/proto/C1H5noD8kEUWZknVrTtRlP/High-Fidelity-Prototypes">
-      <img src="Section 3.png" alt="Filmmaker Platform 1">
-      <div class="figma-caption">Filmmaker Platform 1</div>
-    </div>
-    <div class="figma-card" data-figma-url="https://www.figma.com/design/MoxjiOlGVbb6jPi8TNmciE/Section-3">
-      <img src="Frame 2-min.png" alt="Filmmaker Platform 2">
-      <div class="figma-caption">Filmmaker Platform 2</div>
-    </div>
-  </div>
-</section>
+        <h2>Figma</h2>
+        <div class="grid-gallery">
+          <div class="figma-card" data-figma-url="https://www.figma.com/design/cmaBmjmdEWgBx6ghAGDRLr/Xu_Sofia_W8">
+            <img src="Xu_Sofia_W8.png" alt="Design Library">
+            <div class="figma-caption">Design Library</div>
+          </div>
+          <div class="figma-card" data-figma-url="https://www.figma.com/proto/Ax9EvzDlnglwnViJqWgsEO/Figma-Quiz---Section-2">
+            <img src="Figma Quiz - Section 2.png" alt="Book Reading App">
+            <div class="figma-caption">Book Reading App</div>
+          </div>
+          <div class="figma-card" data-figma-url="https://www.figma.com/design/7eE2XLGlNA7BlLXauJJk4u/UX-Jam--Sunlife--Copy-">
+            <img src="Frame 11949.png" alt="Sunlife App 1">
+            <div class="figma-caption">Sunlife Learn App 1</div>
+          </div>
+          <div class="figma-card" data-figma-url="https://www.figma.com/design/7eE2XLGlNA7BlLXauJJk4u/UX-Jam--Sunlife--Copy-">
+            <img src="Frame 11949 (1).png" alt="Sunlife App 2">
+            <div class="figma-caption">Sunlife Learn App 2</div>
+          </div>
+          <div class="figma-card" data-figma-url="https://www.figma.com/proto/C1H5noD8kEUWZknVrTtRlP/High-Fidelity-Prototypes">
+            <img src="Section 3.png" alt="Filmmaker Platform 1">
+            <div class="figma-caption">Filmmaker Platform 1</div>
+          </div>
+          <div class="figma-card" data-figma-url="https://www.figma.com/design/MoxjiOlGVbb6jPi8TNmciE/Section-3">
+            <img src="Frame 2-min.png" alt="Filmmaker Platform 2">
+            <div class="figma-caption">Filmmaker Platform 2</div>
+          </div>
+        </div>
+      </section>
 
 
-      
+
       <section id="film">
-  <h2>Film Editing</h2>
-  <div class="film-gallery">
-    <div class="film-card">
-      <iframe src="https://www.youtube.com/embed/3YbWMkGh0gU?si=9NcsOSw5Cs3dEsPW" allowfullscreen></iframe>
-      <h3>Echoes of Markham</h3>
-      <p>A documentary exploring the Markham Museum across different eras, showing how people lived throughout time.</p>
-    </div>
-    <div class="film-card">
-      <iframe src="https://www.youtube.com/embed/lOhV2TG9siY?si=028Hw7VQJEvDGD15" allowfullscreen></iframe>
-      <h3>Emotion Design</h3>
-      <p>Demonstrates the emotion of horror through design. A story about the cost of fame and the fragility of success.</p>
-    </div>
-    <div class="film-card">
-      <iframe src="https://www.youtube.com/embed/FeMtgN2BEik?si=E8dhoLBLD1vXpUz2" allowfullscreen></iframe>
-      <h3>Silent Film: Roughcut</h3>
-      <p>Follows a student’s quiet morning in a small one-bedroom apartment with thoughtful visual storytelling.</p>
-    </div>
-    <div class="film-card">
-      <iframe src="https://www.youtube.com/embed/w1W2Xrum9xA?si=WUjbsYBQiiNmVvJC" allowfullscreen></iframe>
-      <h3>Silent Film: Final Cut</h3>
-      <p>Final version showing detailed daily rituals — waking, cooking, getting ready — with creative editing touches.</p>
-    </div>
-  </div>
-</section>
+        <h2>Film Editing</h2>
+        <div class="film-gallery">
+          <div class="film-card">
+            <iframe src="https://www.youtube.com/embed/3YbWMkGh0gU?si=9NcsOSw5Cs3dEsPW" allowfullscreen></iframe>
+            <h3>Echoes of Markham</h3>
+            <p>A documentary exploring the Markham Museum across different eras, showing how people lived throughout time.</p>
+          </div>
+          <div class="film-card">
+            <iframe src="https://www.youtube.com/embed/lOhV2TG9siY?si=028Hw7VQJEvDGD15" allowfullscreen></iframe>
+            <h3>Emotion Design</h3>
+            <p>Demonstrates the emotion of horror through design. A story about the cost of fame and the fragility of success.</p>
+          </div>
+          <div class="film-card">
+            <iframe src="https://www.youtube.com/embed/FeMtgN2BEik?si=E8dhoLBLD1vXpUz2" allowfullscreen></iframe>
+            <h3>Silent Film: Roughcut</h3>
+            <p>Follows a student’s quiet morning in a small one-bedroom apartment with thoughtful visual storytelling.</p>
+          </div>
+          <div class="film-card">
+            <iframe src="https://www.youtube.com/embed/w1W2Xrum9xA?si=WUjbsYBQiiNmVvJC" allowfullscreen></iframe>
+            <h3>Silent Film: Final Cut</h3>
+            <p>Final version showing detailed daily rituals — waking, cooking, getting ready — with creative editing touches.</p>
+          </div>
+        </div>
+      </section>
 
-      
+
       <section id="coding">
         <h2>Coding</h2>
-        <p>Your coding projects go here.</p>
+        <div class="film-gallery">
+          <div class="film-card">
+            <iframe src="https://www.youtube.com/embed/3ltd3IDpo70?si=sSnGAZKiVAVYNdyR" allowfullscreen></iframe>
+            <h3>Harvest Heaven</h3>
+            <p>
+              A cozy farming sim built in p5.js. Grow crops, earn money, and level up—but watch your budget! When funds are low, play fun mini-games like Spelling Bee, Connect 5, or Colour Guess to keep going.
+            </p>
+          </div>
+          <div class="film-card">
+            <iframe src="https://www.youtube.com/embed/OHXPihCHsfo?si=U1DrLpQ6Yo7hIz0J" allowfullscreen></iframe>
+            <h3>House Simulation</h3>
+            <p>
+              A fully interactive house sim in p5.js. Explore different rooms and try out all the furniture—from watching TV and playing PlayStation to running the stove, mirror, or sink.
+            </p>
+          </div>
+        </div>
+
+        <div class="film-card">
+          <iframe src="https://soifa.github.io/myPortfolio-background/" title="Old Portfolio Website"></iframe>
+          <h3>Old Portfolio Website</h3>
+          <p>This is my earlier personal portfolio built using HTML, CSS, and a playful visual design. It includes sections like background, interest, experience, and artwork.</p>
+        </div>
+
       </section>
     </main>
 
     <!-- Lightbox -->
     <div id="lightbox-overlay">
-  <div>
-    <img src="" alt="Zoomed image">
-    <div style="text-align:center; margin-top: 1rem;">
-      <a id="figmaLink" href="#" target="_blank" style="
+      <div>
+        <img src="" alt="Zoomed image">
+        <div style="text-align:center; margin-top: 1rem;">
+          <a id="figmaLink" href="#" target="_blank" style="
         display: inline-block;
         margin-top: 10px;
         background-color: var(--accent);
@@ -615,9 +638,9 @@ body.dark-mode .film-card p {
         font-family: 'Inter', sans-serif;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       ">View in Figma ↗</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
 
     <script>
@@ -685,18 +708,17 @@ body.dark-mode .film-card p {
           label.style.color = '#ffffff';
         }
       });
-      
-      // Figma card zoom
-document.querySelectorAll('.figma-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const img = card.querySelector('img');
-    const figmaURL = card.getAttribute('data-figma-url');
-    lightboxImg.src = img.src;
-    document.getElementById('figmaLink').href = figmaURL;
-    lightbox.classList.add('active');
-  });
-});
 
+      // Figma card zoom
+      document.querySelectorAll('.figma-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const img = card.querySelector('img');
+          const figmaURL = card.getAttribute('data-figma-url');
+          lightboxImg.src = img.src;
+          document.getElementById('figmaLink').href = figmaURL;
+          lightbox.classList.add('active');
+        });
+      });
     </script>
   </body>
 </html>
