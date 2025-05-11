@@ -11,6 +11,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
     <style>
+      .main-header {
+  position: fixed;
+  top: 0;
+  left: 200px;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  box-shadow: none;
+}
+
+
+      .main-header h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0;
+      }
+
+      .main-nav a {
+        margin-left: 1rem;
+        color: #666;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .main-nav a:hover {
+        color: var(--accent);
+      }
+
+      main {
+        margin-left: 200px;
+        margin-top: 100px;
+        /* Add space for fixed header */
+        width: calc(100% - 200px);
+      }
+
+
       :root {
         --light-pink: #ffe8f2;
         --soft-blue: #e3f3ff;
@@ -399,6 +441,14 @@
   </head>
 
   <body>
+    <header class="main-header">
+     <!-- <h1>Sofia Xu</h1> -->
+      <nav class="main-nav">
+        <a href="https://soifa.github.io/#about">About</a>
+        <a href="https://soifa.github.io/#portfolio">Portfolio</a>
+        <a href="https://soifa.github.io/#contact">Contact</a>
+      </nav>
+    </header>
 
 
     <nav class="timeline">
@@ -611,10 +661,10 @@
             </p>
           </div>
           <div class="film-card">
-          <iframe src="https://soifa.github.io/myPortfolio-background/" title="Old Portfolio Website"></iframe>
-          <h3>Old Portfolio Website</h3>
-          <p>This is my earlier personal portfolio built using HTML, CSS, and a playful visual design. It includes sections like background, interest, experience, and artwork.</p>
-        </div>
+            <iframe src="https://soifa.github.io/myPortfolio-background/" title="Old Portfolio Website"></iframe>
+            <h3>Old Portfolio Website</h3>
+            <p>This is my earlier personal portfolio built using HTML, CSS, and a playful visual design. It includes sections like background, interest, experience, and artwork.</p>
+          </div>
         </div>
 
       </section>
